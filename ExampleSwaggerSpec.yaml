@@ -1,0 +1,78 @@
+openapi: 3.0.0
+info:
+  title: SharesInformationProvider API
+  description: Just a personal prject to play with shares
+  version: 0.1.9
+servers:
+  - url: http://api.example.com/v1
+    description: Placeholder URL above effectively garbage
+paths:
+  /SharesInformation:
+    get:
+      summary: Returns the appropriate share values based on the inputs provided.
+      parameters:
+        - name: listingName
+          in: query
+          required: true
+          description: The name which indicates the companies share name
+          schema:
+            type : string
+        - name: startDate
+          in: query
+          required: true
+          description: The start date to get the share price at.
+          schema:
+            type : string
+            format: date
+        - name: endDate
+          in: query
+          required: true
+          description: The end date to get the share price at.
+          schema:
+            type : string
+            format: date
+        - name: timeIncrement
+          in: query
+          required: true
+          description: The time delta to use between start and end date. Measured in hours Ex 1 day = 24
+          schema:
+            type : integer
+      responses:
+        '200':
+          description: Results from valid request
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/SuccessSharesInformation'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+components:
+  responses:
+    BadRequest:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+        - code
+        - message
+    SuccessSharesInformation:
+      type: object
+      properties:
+        listingName:
+          type: string
+        additionalProperties:
+          type: number
+          description: key will be returned as a date string
+      required:
+        - code
+        - message

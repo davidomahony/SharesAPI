@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/SharesInformationProvider.Models
+/SharesInformationProvider.Core/obj
+/SharesInformationProvider.API/bin/Debug/net5.0
+/SharesInformationProvider.API/.vs/SharesInformationProvider.API
+/SharesInformationProvider.API/obj
