@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharesInformationProvider.API", "SharesInformationProvider.API.csproj", "{45D3CF73-0D40-47AC-A707-080E580B0A78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharesInformationProvider.Core", "..\SharesInformationProvider.Core\SharesInformationProvider.Core.csproj", "{EFD1446A-215A-43F6-90B0-38A25C346D80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharesInformationProvider.Core", "..\SharesInformationProvider.Core\SharesInformationProvider.Core.csproj", "{EFD1446A-215A-43F6-90B0-38A25C346D80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharesInformationProvider.Models", "..\SharesInformationProvider.Models\SharesInformationProvider.Models.csproj", "{154041BA-6F2D-45B6-ADA8-DE1F0B2BEFBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharesInformationProvider.Models", "..\SharesInformationProvider.Models\SharesInformationProvider.Models.csproj", "{154041BA-6F2D-45B6-ADA8-DE1F0B2BEFBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -7,3 +7,10 @@
 /SharesInformationProvider.API/.vs/SharesInformationProvider.API
 /SharesInformationProvider.API/obj
 /SharesInformationProvider.Models/obj
+/SharesInformationProvider.Core/bin/Debug/net5.0
+/SharesInformationProvider.Core/bin/Debug/net5.0
+/SharesInformationProvider.Models/bin/Debug/net5.0/SharesInformationProvider.Models.pdb
+/SharesInformationProvider.Models/bin/Debug/net5.0/SharesInformationProvider.Models.dll
+/SharesInformationProvider.Models/bin/Debug/net5.0/SharesInformationProvider.Models.deps.json
+/SharesInformationProvider.Models/bin/Debug/net5.0/SharesInformationProvider.Models.dll
+*.pdb

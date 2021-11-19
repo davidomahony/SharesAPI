@@ -1,16 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SharesInformationProvider.API.Fetchers;
+using SharesInformationProvider.API.Services;
+using SharesInformationProvider.Core;
+using SharesInformationProvider.Core.AlphaVantage;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SharesInformationProvider.API
 {
@@ -26,6 +24,12 @@ namespace SharesInformationProvider.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var mainUrl = Configuration["SharesApiProviderInformation:MainUrl"];
+
+            services.AddHttpClient<IResultsFetcher<AlphaVantageStockFetchResult>, AlphaVantageStocksFetcher>(cl =>
+                cl.BaseAddress = new Uri("SharesApiProviderInformation:AlphaVantageSharesUrl"));
+
+            services.AddSingleton<BasicStocksService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
