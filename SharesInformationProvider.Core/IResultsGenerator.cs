@@ -8,6 +8,6 @@ namespace SharesInformationProvider.Core
 {
     public interface IResultsGenerator<T>
     {
-        public T GenerateResults();
+        public Task<T> GenerateResults(object information);
     }
 }

@@ -10,9 +10,7 @@ namespace SharesInformationProvider.API.Fetchers
 
         public HttpResultsFecther(HttpClient client) => this.client = client;
 
-        public abstract Task<T> FetchResults();
-
-        public abstract void ConfigureRequest(object details);
+        public abstract Task<T> FetchResults(object requestDetails);
 
         public abstract void ProcessResults();
     }

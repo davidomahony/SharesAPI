@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SharesInformationProvider.API.Services;
 using SharesInformationProvider.Models;
@@ -10,9 +11,9 @@ namespace SharesInformationProvider.API.Controllers
     public class SharesInformationController : ControllerBase
     {
         private readonly ILogger logger;
-        private readonly BasicStocksService basicStocksService;
+        private readonly BasicStockService basicStocksService;
 
-        public SharesInformationController(ILogger<SharesInformationController> logger, BasicStocksService basicStocksService)
+        public SharesInformationController(ILogger<SharesInformationController> logger, BasicStockService basicStocksService)
         {
             this.logger = logger;
             this.basicStocksService = basicStocksService;
@@ -29,7 +30,13 @@ namespace SharesInformationProvider.API.Controllers
         [Route("BasicQuery")]
         public IActionResult BasicQuery([FromQuery] BasicSharesQueryInfo information)
         {
-            return Ok($"Comapny: {information.ListingName}");
+            if (this.basicStocksService == null)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+
+            var responseBody = this.basicStocksService.GenerateResults(information);
+            return Ok(responseBody);
         }
     }
 }

@@ -24,12 +24,12 @@ namespace SharesInformationProvider.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var mainUrl = Configuration["SharesApiProviderInformation:MainUrl"];
+            var mainUrl = Configuration["SharesApiProviderInformation:AlphaVantageSharesUrl"];
 
             services.AddHttpClient<IResultsFetcher<AlphaVantageStockFetchResult>, AlphaVantageStocksFetcher>(cl =>
-                cl.BaseAddress = new Uri("SharesApiProviderInformation:AlphaVantageSharesUrl"));
+                cl.BaseAddress = new Uri(mainUrl));
 
-            services.AddSingleton<BasicStocksService>();
+            services.AddSingleton<BasicStockService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

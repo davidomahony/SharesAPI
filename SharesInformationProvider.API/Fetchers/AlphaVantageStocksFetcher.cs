@@ -1,4 +1,7 @@
-﻿using SharesInformationProvider.Core.AlphaVantage;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using SharesInformationProvider.Core.AlphaVantage;
+using SharesInformationProvider.Models;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,24 +10,41 @@ namespace SharesInformationProvider.API.Fetchers
 {
     public class AlphaVantageStocksFetcher : HttpResultsFecther<AlphaVantageStockFetchResult>
     {
-        public AlphaVantageStocksFetcher(HttpClient client)
+        private readonly string apiKey;
+
+        public AlphaVantageStocksFetcher(HttpClient client, IConfiguration configuration)
             : base(client)
         {
+            this.apiKey = configuration["SharesApiProviderInformation:AlphaVantageInformation:ApiKey"];
         }
 
-        public override void ConfigureRequest(object details)
+        public override async Task<AlphaVantageStockFetchResult> FetchResults(object information)
         {
-            throw new NotImplementedException();
-        }
+            var requestInformation = information as BasicSharesQueryInfo;
 
-        public override Task<AlphaVantageStockFetchResult> FetchResults()
-        {
+            var result = await this.client.GetAsync(this.BuildRequest(requestInformation));
+            if (result.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var responseContent = await result.Content.ReadAsStringAsync();
+                var deserializedResponse = JsonConvert.DeserializeObject<AlphaVantageStockFetchResult>(responseContent);
+
+                if (deserializedResponse != null)
+                {
+                    return deserializedResponse;
+                }
+            }
+
             throw new NotImplementedException();
         }
 
         public override void ProcessResults()
         {
             throw new NotImplementedException();
+        }
+
+        private string BuildRequest(BasicSharesQueryInfo info)
+        {
+            return $"?function=TIME_SERIES_DAILY&symbol={info.ListingName}&interval={info.TimeIncrement}hours&apikey={this.apiKey}";
         }
     }
 }

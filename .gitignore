@@ -14,3 +14,13 @@
 /SharesInformationProvider.Models/bin/Debug/net5.0/SharesInformationProvider.Models.deps.json
 /SharesInformationProvider.Models/bin/Debug/net5.0/SharesInformationProvider.Models.dll
 *.pdb
+/SharesInformationProvider.Test/obj/SharesInformationProvider.Test.csproj.nuget.g.targets
+/SharesInformationProvider.Test/obj/SharesInformationProvider.Test.csproj.nuget.g.props
+/SharesInformationProvider.Test/obj/SharesInformationProvider.Test.csproj.nuget.dgspec.json
+/SharesInformationProvider.Test/obj/project.nuget.cache
+/SharesInformationProvider.Test/obj/project.assets.json
+/SharesInformationProvider.Test/obj/Debug/net5.0/SharesInformationProvider.Test.GeneratedMSBuildEditorConfig.editorconfig
+/SharesInformationProvider.Test/obj/Debug/net5.0/SharesInformationProvider.Test.csproj.AssemblyReference.cache
+/SharesInformationProvider.Test/obj/Debug/net5.0/SharesInformationProvider.Test.assets.cache
+/SharesInformationProvider.Test/obj/Debug/net5.0/SharesInformationProvider.Test.AssemblyInfoInputs.cache
+/SharesInformationProvider.Models/bin/Debug/net5.0/ref/SharesInformationProvider.Models.dll
