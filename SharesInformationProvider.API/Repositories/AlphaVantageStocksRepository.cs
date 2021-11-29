@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace SharesInformationProvider.API.Fetchers
 {
-    public class AlphaVantageStocksFetcher : HttpResultsFecther<AlphaVantageStockFetchResult>
+    public class AlphaVantageStocksRepository : IFetcherRepository<AlphaVantageStockFetchResult>
     {
         private readonly string apiKey;
 
-        public AlphaVantageStocksFetcher(HttpClient client, IConfiguration configuration)
+        public AlphaVantageStocksRepository(HttpClient client, IConfiguration configuration)
             : base(client)
         {
             this.apiKey = configuration["SharesApiProviderInformation:AlphaVantageInformation:ApiKey"];

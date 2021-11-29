@@ -26,7 +26,7 @@ namespace SharesInformationProvider.API
         {
             var mainUrl = Configuration["SharesApiProviderInformation:AlphaVantageSharesUrl"];
 
-            services.AddHttpClient<IResultsFetcher<AlphaVantageStockFetchResult>, AlphaVantageStocksFetcher>(cl =>
+            services.AddHttpClient<IResultsRepository<AlphaVantageStockFetchResult>, AlphaVantageStocksRepository>(cl =>
                 cl.BaseAddress = new Uri(mainUrl));
 
             services.AddSingleton<BasicStockService>();

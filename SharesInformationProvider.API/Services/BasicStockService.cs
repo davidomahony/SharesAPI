@@ -10,11 +10,11 @@ namespace SharesInformationProvider.API.Services
 {
     public class BasicStockService : IResultsGenerator<BasicSharesQueryResponse>
     {
-        HttpResultsFecther<AlphaVantageStockFetchResult> resultsFetcher;
+        IFetcherRepository<AlphaVantageStockFetchResult> resultsFetcher;
 
-        public BasicStockService(IResultsFetcher<AlphaVantageStockFetchResult> basicResultsFetcher)
+        public BasicStockService(IResultsRepository<AlphaVantageStockFetchResult> basicResultsFetcher)
         {
-            this.resultsFetcher = basicResultsFetcher as HttpResultsFecther<AlphaVantageStockFetchResult>;
+            this.resultsFetcher = basicResultsFetcher as IFetcherRepository<AlphaVantageStockFetchResult>;
         }
 
         public async Task<BasicSharesQueryResponse> GenerateResults(object information)

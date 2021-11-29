@@ -2,7 +2,7 @@
 
 namespace SharesInformationProvider.Core
 {
-    public interface IResultsFetcher<T>
+    public interface IResultsRepository<T>
     {
         public Task<T> FetchResults(object requestInformation);
     }
